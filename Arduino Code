@@ -1,0 +1,41 @@
+#define SENSOR1 A0
+#define SENSOR2 A1
+#define RELAY   8
+
+int threshold = 550;   // Change this after calibration
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(RELAY, OUTPUT);
+
+  // Relay OFF at start
+  digitalWrite(RELAY, HIGH);
+}
+
+void loop() {
+
+  int moisture1 = analogRead(SENSOR1);
+  int moisture2 = analogRead(SENSOR2);
+
+  int averageMoisture = (moisture1 + moisture2) / 2;
+
+  Serial.print("Sensor1: ");
+  Serial.print(moisture1);
+  Serial.print("  Sensor2: ");
+  Serial.print(moisture2);
+  Serial.print("  Average: ");
+  Serial.println(averageMoisture);
+
+  // DRY soil → Pump ON
+  if (averageMoisture > threshold) {
+    digitalWrite(RELAY, LOW);   // Pump ON
+    Serial.println("Pump ON");
+  } 
+  // WET soil → Pump OFF
+  else {
+    digitalWrite(RELAY, HIGH);  // Pump OFF
+    Serial.println("Pump OFF");
+  }
+
+  delay(2000);
+}
