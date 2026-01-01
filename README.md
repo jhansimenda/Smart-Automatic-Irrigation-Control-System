@@ -81,5 +81,15 @@ Set the threshold value between wet and dry readings (recommended ≈ 550).
 2. Upload `irrigation.ino` to the Arduino board.  
 3. Open Serial Monitor and observe sensor values.  
 4. Adjust the threshold for best performance.  
-5. Your smart irrigation system is now ready to use 🌿  
+5. Your smart irrigation system is now ready to use
+
+---
+
+##  Future Enhancements
+
+- LCD display for live moisture readings  
+- WiFi / IoT based monitoring  
+- Mobile app integration  
+- Weather-based irrigation  
+- Solar powered operation  
 
